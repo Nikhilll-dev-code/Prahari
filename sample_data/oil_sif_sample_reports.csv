@@ -1,0 +1,27 @@
+installation,report_type,description,reporter_severity,observation_datetime
+Duliajan,Unsafe Condition,"Found scaffolding without a guardrail near tank 4; contractor was standing on it while no harness was worn.",Low,2026-09-27 14:10:00
+Naharkatiya,Unsafe Act,"Electrician worked on 415V MCC feeder without applying lockout tagout padlock as isolation switch was stiff.",Low,2026-09-27 09:30:00
+Baghjan,Near Miss,"Observed weeping valve gland packing with continuous hydrocarbon gas hiss on high pressure wellhead Christmas tree at 3000 PSI.",Low,2026-09-27 11:15:00
+Moran,Unsafe Act,"Roughneck was standing directly in rotary table swing radius while drill string was being hoisted under heavy tension.",Medium,2026-09-26 16:45:00
+Digboi,Unsafe Condition,"Two contract workers entered crude oil storage tank for sludge cleaning without gas test clearance and no continuous ventilation.",Low,2026-09-26 10:20:00
+Jorhat,Near Miss,"Unsecured heavy flange wrench fell from derrick monkey board 18 meters above rig floor, landing 1 meter from driller console.",Low,2026-09-26 15:00:00
+Kumchai,Unsafe Act,"Contractor observed standing on top of crude storage tank roof without safety harness or fall arrest lanyard attached to lifeline.",Low,2026-09-25 13:40:00
+Barekuri,Unsafe Condition,"Crane sling showed frayed steel strands while lifting 3-ton drill collar over active work area on pipe deck.",Medium,2026-09-25 08:30:00
+Duliajan,Near Miss,"H2S portable gas monitor alarmed at 15 PPM near wellhead manifold; operator continued work without donning escape BA set.",Low,2026-09-25 17:10:00
+Naharkatiya,Unsafe Act,"Maintenance crew entered low-pressure separator vessel with manway cover open but without atmospheric oxygen test and no standby attendant.",Medium,2026-09-24 14:00:00
+Moran,Unsafe Condition,"Operator positioned himself in line of fire of pressurized mud hose with missing whip-check safety cable during pump startup.",Low,2026-09-24 11:25:00
+Baghjan,Near Miss,"Thermal relief valve on condensate discharge line failed to seat, releasing flammable vapor cloud near boiler area.",Medium,2026-09-24 07:50:00
+Digboi,Unsafe Act,"Technician climbed up the derrick mast ladder without engaging the fall arrestor sleeve on the safety climb cable.",Low,2026-09-23 16:15:00
+Jorhat,Unsafe Condition,"Casing pipe rolled off storage rack toward pedestrian walkway because stop chocks were not placed on pipe rack tier.",Medium,2026-09-23 10:05:00
+Kumchai,Unsafe Act,"Mechanic started dismantling pump impeller on crude dispatch pump while suction valve was not positively isolated and tag not placed.",Low,2026-09-23 13:30:00
+Duliajan,Unsafe Condition,"Welder grinding pipe support inside fabrication yard without wearing full face shield, using only safety spectacles.",Medium,2026-09-22 15:45:00
+Naharkatiya,Unsafe Act,"Technician handling hydrocarbon solvent during pump overhaul without chemical resistant nitrile gloves, skin contact noted.",Low,2026-09-22 11:10:00
+Moran,Unsafe Condition,"Loose electrical extension cord trailing across walkway near workshop bench creating a tripping hazard near power tools.",Low,2026-09-22 09:20:00
+Digboi,Unsafe Condition,"Fire extinguisher in chemical storage bay had inspection tag overdue by 3 weeks, pressure gauge still in green zone.",Low,2026-09-21 14:35:00
+Jorhat,Unsafe Act,"Safety helmet chin strap unfastened while operating vibrating shaker screen in drilling mud area.",Low,2026-09-21 16:50:00
+Barekuri,Unsafe Condition,"Crane hook safety latch spring was weak and did not close automatically unless pushed manually by rigger.",Medium,2026-09-20 10:15:00
+Duliajan,Unsafe Condition,"Small water puddle noticed near administrative corridor entrance due to AC drain overflow in office building.",Low,2026-09-20 08:45:00
+Moran,Unsafe Condition,"Office pantry trash bin was overflowing with empty paper tea cups and cardboard snack packets.",Low,2026-09-19 17:00:00
+Naharkatiya,Unsafe Condition,"Cardboard carton boxes stacked in photocopier room corner obstructing spare paper ream rack.",Low,2026-09-19 11:30:00
+Baghjan,Unsafe Condition,"Defective ceiling tube light flickering in 2nd floor finance department hallway.",Low,2026-09-18 13:15:00
+Digboi,Unsafe Condition,"Slight oil smudge observed on outer casing of parked non-operational tractor in open grass yard.",Low,2026-09-18 09:00:00

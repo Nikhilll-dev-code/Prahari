@@ -1,0 +1,29 @@
+[
+  {
+    "user_id": "b058598f-1c14-488b-94c7-66cdea9cc64c",
+    "username": "reporter@oilindia.in",
+    "name": "Rahul Sarma (Field Engineer)",
+    "role": "Reporter",
+    "installation": "Duliajan",
+    "password_hash": "$2a$10$.cmc2mip3FFp204aLURe1.p/O9u8/dXOSutgeuk9qAc6VRydWVr7e",
+    "account_status": "Active"
+  },
+  {
+    "user_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "username": "hse@oilindia.in",
+    "name": "Priyanka Borah (HSE Manager)",
+    "role": "HSE Officer",
+    "installation": "Duliajan",
+    "password_hash": "$2a$10$.MIF/6oBw2vUCox9tgK9h.DY/YVfkA8aptSA6Ja1y7C25gnMOcAh6",
+    "account_status": "Active"
+  },
+  {
+    "user_id": "41f5e560-79d0-472a-af6f-ffa88a7c720d",
+    "username": "head@oilindia.in",
+    "name": "Anupam Dutta (HSSE Corporate Head)",
+    "role": "Divisional Head",
+    "installation": "Duliajan",
+    "password_hash": "$2a$10$hZdKgjUzO0hwB9RcpKMq8.saF5UC.Mtr3NffIGi9FwMRCZPQBgG5W",
+    "account_status": "Active"
+  }
+]
