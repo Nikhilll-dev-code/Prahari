@@ -16,8 +16,32 @@
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  color: #f8fafc;
+  background-color: #0b132b;
+}
+
+html:not(.dark) body,
+html.light body {
+  color: #0f172a;
   background-color: #f8fafc;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Poppins', 'Inter', -apple-system, sans-serif;
+}
+
+/* Grayscale Mode for WCAG 2.1 AA / UI-3 Jury Verification */
+.demo-grayscale {
+  filter: grayscale(100%) !important;
 }
 
 /* Custom explainability highlight styling (Semibold + subtle high-contrast highlight background) */
@@ -25,9 +49,137 @@ body {
   background-color: #fef08a;
   color: #854d0e;
   font-weight: 600;
-  padding: 1px 4px;
-  border-radius: 3px;
-  border-bottom: 2px solid #eab308;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border-bottom: 2px solid #ca8a04;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Focus outline for keyboard navigation (WCAG 2.1 AA) */
+:focus-visible {
+  outline: 2px solid #2E74B5 !important;
+  outline-offset: 2px !important;
+}
+
+/* Glassmorphism Panel Utilities (Dark & Light support) */
+.dark .glass-panel {
+  background: rgba(15, 30, 61, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(46, 116, 181, 0.25);
+  box-shadow: 0 10px 30px 0 rgba(11, 19, 43, 0.5);
+}
+
+.light .glass-panel,
+html:not(.dark) .glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 30px 0 rgba(15, 23, 42, 0.06);
+}
+
+.dark .glass-card-interactive {
+  background: linear-gradient(135deg, rgba(31, 56, 100, 0.45) 0%, rgba(15, 30, 61, 0.65) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .glass-card-interactive:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(0, 180, 216, 0.5);
+  box-shadow: 0 14px 40px -10px rgba(0, 180, 216, 0.25);
+}
+
+.light .glass-card-interactive,
+html:not(.dark) .glass-card-interactive {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.92) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(203, 213, 225, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light .glass-card-interactive:hover,
+html:not(.dark) .glass-card-interactive:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(46, 116, 181, 0.5);
+  box-shadow: 0 14px 35px -8px rgba(46, 116, 181, 0.2);
+}
+
+/* Sentinel Gradient Text Utility */
+.dark .gradient-text-sentinel {
+  background: linear-gradient(135deg, #ffffff 0%, #90e0ef 45%, #00b4d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .gradient-text-sentinel,
+html:not(.dark) .gradient-text-sentinel {
+  background: linear-gradient(135deg, #0F1E3D 0%, #1F3864 45%, #2E74B5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-navy {
+  background: linear-gradient(135deg, #1F3864 0%, #2E74B5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dynamic Shift Background */
+.dark .animated-gradient-bg {
+  background: linear-gradient(-45deg, #0b132b, #132247, #1f3864, #0f1e3d);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+.light .animated-gradient-bg,
+html:not(.dark) .animated-gradient-bg {
+  background: linear-gradient(-45deg, #f8fafc, #edf2f7, #e2e8f0, #f1f5f9);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Premium Button Transitions */
+.btn-premium {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-premium:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px -5px rgba(46, 116, 181, 0.5);
+}
+
+.btn-premium:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* Custom scrollbars */
+html.dark ::-webkit-scrollbar-track {
+  background: #0b132b;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #1f3864;
+}
+html.light ::-webkit-scrollbar-track,
+html:not(.dark) ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb,
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
 }
 
 /* Custom scrollbars */
@@ -36,12 +188,22 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #0b132b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
+  background: #1f3864;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #2e74b5;
+}
+
+/* Prefers-reduced-motion for Accessibility (STEP 7) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
