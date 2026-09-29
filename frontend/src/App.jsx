@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAuth } from './context/AuthContext';
 import { api } from './services/api';
@@ -14,14 +14,15 @@ export default function App() {
   const [currentView, setCurrentView] = useState('welcome'); // 'welcome' | 'triage' | 'analytics' | 'report_form' | 'manual_review'
   const [stats, setStats] = useState(null);
 
-  const fetchStats = async () => {
+  // Memoized fetchStats to prevent infinite re-render loops / screen flickering
+  const fetchStats = useCallback(async () => {
     try {
       const data = await api.getStats();
       setStats(data);
     } catch (err) {
       console.error('Failed to fetch stats:', err);
     }
-  };
+  }, []);
 
   // STEP 1: NEW USER FLOW — After successful login, redirect to Welcome page (view: 'welcome')
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function App() {
       fetchStats();
       setCurrentView('welcome');
     }
-  }, [user]);
+  }, [user, fetchStats]);
 
   const handleGetStarted = () => {
     if (isReporter) {
@@ -153,9 +154,9 @@ export default function App() {
       <footer className="bg-slate-100 dark:bg-[#080E21] border-t border-slate-200 dark:border-slate-800/80 py-4 text-xs text-slate-600 dark:text-slate-400 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center space-x-2 flex-wrap">
-            <span className="font-heading font-extrabold text-slate-900 dark:text-white">PRAHARI</span>
+            <span className="font-heading font-extrabold text-slate-900 dark:text-white">PRAHARI (प्रहरी)</span>
             <span className="text-slate-400 dark:text-slate-600">•</span>
-            <span>SIF-Sentinel AI/NLP Safety Engine</span>
+            <span>AI/NLP SIF Precursor Detection Engine</span>
             <span className="text-slate-400 dark:text-slate-600">•</span>
             <span className="font-mono text-accent-blue dark:text-cyan-bright font-bold">PS SIH26165</span>
           </div>

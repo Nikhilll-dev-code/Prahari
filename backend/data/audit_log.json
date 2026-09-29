@@ -446,5 +446,1206 @@
       "status": "Closed"
     },
     "timestamp": "2026-09-28T17:01:39.683Z"
+  },
+  {
+    "log_id": "9e959584-86a1-4114-96af-cfcf69067eef",
+    "report_id": "e1745160-016e-4f1c-aca7-95ca091c3218",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "2a8403d2-18ee-4c79-bbd8-56e9249f842f",
+    "report_id": "8c77b237-dfbc-4d22-b77c-e0d10a026d46",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "d714f7fd-b80b-4c58-9219-e378af74dd6c",
+    "report_id": "cb08f9e7-fd0f-4827-a1b8-776cb485d4aa",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "e7b266c3-624b-425f-a2e1-7a84693ff5b7",
+    "report_id": "2b9a3e0d-4da3-4ff5-bb66-f03492e386bf",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "9a8cc3eb-1ac8-43eb-9420-2a7dcea013c7",
+    "report_id": "ed98764d-f17b-4043-ba9a-5e909f91e7fd",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "e11d68db-80f0-4c6d-b8ed-adc19e4e7363",
+    "report_id": "9d068fd7-f897-4bca-9ec9-a23ada9e4cab",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "d9d9404f-6192-44e5-a6e7-1c69b9504950",
+    "report_id": "ffe3d174-2620-487e-a262-406c8ec25dfc",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "b33917de-28e0-427d-a80d-3d393688aa19",
+    "report_id": "5d8ae7d5-b04f-4d6c-8507-d4802b787d42",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "e4dad763-6438-42b1-8a21-4916d69e9e8c",
+    "report_id": "5c3cc877-1e47-4c2f-a2aa-70fb065785ad",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "63ff4e51-ef2c-4397-b833-d38dbc711917",
+    "report_id": "546f25bf-f493-4cb6-885c-d4bbff99a1b4",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "0948b37c-08cf-4e68-a469-380e2515835d",
+    "report_id": "896be578-c775-4d7e-ad3d-54dbfbc44515",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "e466e0bc-8d77-40a0-8666-ac4adde8c6b2",
+    "report_id": "c8a53c0f-5107-438f-8622-8df471bc8275",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "0b1c7134-7dcc-474a-8cfd-08088f0305ef",
+    "report_id": "2473994d-0208-4f56-ba18-410253fddabf",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "09622312-86fb-418d-8c20-ebd96f5cd054",
+    "report_id": "0b3cfdd2-cca0-41c0-93b4-fd65f42dab4f",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "50429421-df8f-4d69-be57-fdcffd976739",
+    "report_id": "03dd2553-95e0-40fa-af0b-dfc388c87b3b",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "738cb010-fd9d-43fc-909d-2fa84af8fc89",
+    "report_id": "a8252edf-68d2-4a69-8ce3-f3933246a8e0",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Medium"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "70e89df9-d6af-4b69-a825-074420e36199",
+    "report_id": "562ceb22-0702-44e8-a5a0-ace56faf7f34",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "da9b192f-0d43-488c-8687-5679d13e20cd",
+    "report_id": "dbd2088c-2de7-42d6-b5ff-d78b486749f3",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "7c945396-7aa7-42f0-a787-3edc9b65efc3",
+    "report_id": "b9fa745f-b913-4fc6-ac45-de7cec376f21",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "4d872e57-7bda-4243-9e3a-25bc0267852d",
+    "report_id": "8fad92b6-e274-447a-a04d-8827c99f2b1c",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Medium"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "382a73df-d0f2-4e5c-a007-dc57b6d94443",
+    "report_id": "db89d86a-987d-4e20-8d0a-58e6632b5d25",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "1f3f604e-4f84-46a7-9d09-b4d644dc2de8",
+    "report_id": "dfe4c009-7b19-43da-9199-989b1c8a33de",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "e4f6347e-6397-494f-a9c2-76ee1d5aeb99",
+    "report_id": "e52ad6af-9d0b-4ad3-ae46-5c7b886c8440",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "b1c4280d-0201-45b2-b9ca-b5c12dac5ed6",
+    "report_id": "006e82a6-06c1-47dd-be56-6d278ee8f637",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "97af4fed-bc79-4b20-9671-7e5d8f804005",
+    "report_id": "3d9c4edb-3fa8-4e57-9751-29c0350e3557",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "29a30bf9-b660-4f75-af45-61cada16ff69",
+    "report_id": "e8d2a78b-55d8-47f6-af01-9d59c9b888be",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:29:33.332Z"
+  },
+  {
+    "log_id": "ef934df4-00e2-4a62-89e7-60defe53f338",
+    "report_id": "cfb570f1-92e0-4370-b69d-53dbe91e3e17",
+    "actor_id": "b058598f-1c14-488b-94c7-66cdea9cc64c",
+    "actor_name": "Rahul Sarma (Field Engineer)",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Pending"
+    },
+    "timestamp": "2026-09-29T12:29:34.488Z"
+  },
+  {
+    "log_id": "3f954afe-4b98-40c1-9f66-e0535b1ab1e7",
+    "report_id": "cfb570f1-92e0-4370-b69d-53dbe91e3e17",
+    "actor_id": null,
+    "actor_name": "SIF-Sentinel ML Engine",
+    "action": "Classified",
+    "before_state": {
+      "risk_band": "Pending"
+    },
+    "after_state": {
+      "risk_score": 76,
+      "risk_band": "High",
+      "hazard_category_primary": "LOTO Bypass",
+      "hazard_category_secondary": [],
+      "explainability_terms": [
+        "lockout",
+        "tagout",
+        "isolation",
+        "415V",
+        "tagout padlock",
+        "415v mcc feeder"
+      ],
+      "is_manual_review": false,
+      "confidence": 0.359
+    },
+    "timestamp": "2026-09-29T12:29:34.547Z"
+  },
+  {
+    "log_id": "986d517c-ba47-4c61-811d-cce31031a1fd",
+    "report_id": "cfb570f1-92e0-4370-b69d-53dbe91e3e17",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Status Changed",
+    "before_state": {
+      "status": "Submitted"
+    },
+    "after_state": {
+      "status": "Reviewed"
+    },
+    "timestamp": "2026-09-29T12:29:34.581Z"
+  },
+  {
+    "log_id": "8d6b78b7-edd4-4395-85c2-74b7d1fcb27d",
+    "report_id": "cfb570f1-92e0-4370-b69d-53dbe91e3e17",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Status Changed",
+    "before_state": {
+      "status": "Reviewed"
+    },
+    "after_state": {
+      "status": "Escalated"
+    },
+    "timestamp": "2026-09-29T12:29:34.630Z"
+  },
+  {
+    "log_id": "473226b1-0ec7-445b-9921-78bd9f7305d8",
+    "report_id": "cfb570f1-92e0-4370-b69d-53dbe91e3e17",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Status Changed",
+    "before_state": {
+      "status": "Escalated"
+    },
+    "after_state": {
+      "status": "Closed"
+    },
+    "timestamp": "2026-09-29T12:29:34.649Z"
+  },
+  {
+    "log_id": "9ba13e76-8b07-4673-9209-ecbe3c257cfd",
+    "report_id": "9df13e68-ade2-4eb4-a3b0-c07274763750",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "96483c75-994b-4522-82af-26de51196f70",
+    "report_id": "82b521b2-59c8-448a-abe2-f4866873f79a",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "828c7c95-0eb7-4eec-88bd-4c102e086a9a",
+    "report_id": "4eb5dbc8-9b6a-43c0-b949-cbf9aa3fa7df",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "f2000ffb-4131-4866-afaa-6fe67786fcb9",
+    "report_id": "9a4af583-134e-466a-b8e4-0b8dda522c92",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "5d5ea11b-3eb6-48d8-b591-1b9622828d32",
+    "report_id": "2f89c7f7-d154-43ab-92fe-c412396a65d8",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "fcc60106-78b2-487b-a4e3-fe379a80e7f7",
+    "report_id": "28ae740b-91f3-4dac-84ef-5c9ca8e82f95",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "a83e74f4-1cec-424d-b7f9-5716b9d61047",
+    "report_id": "1d9288d2-ad0c-4b5a-8054-8b37f85c86f1",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "05469eda-fb48-488d-8d1b-5069c535d98d",
+    "report_id": "acb5925f-cff9-4307-b378-fb50c20ab037",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "345a6ea2-5994-46dd-965e-08d9b0dbf7e9",
+    "report_id": "8b01747e-4d7e-40b2-9a5e-86c217cdedd8",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "7d9e7c94-121c-42de-9805-f161f646584c",
+    "report_id": "0806612b-a623-4142-9584-bcd34562be01",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "a77d6ba0-d372-4c9d-8335-9e537a06df87",
+    "report_id": "74593977-6ca5-4ee9-920b-ef83d0672c54",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "fe6d9386-f363-4243-8d5e-ee18b382f60a",
+    "report_id": "721de40d-ba70-40c8-b0ea-66c9f1c42def",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "17e06c73-f501-4b7e-91c0-a7099fe0c06d",
+    "report_id": "8617d992-a977-45f1-b231-ba8f0c299bad",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "af454f59-2f6b-4b0f-b1ed-b220ce694c39",
+    "report_id": "bcca2114-9d53-4c75-8f2a-a88bec923e5f",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "6d6d6b71-62f6-458e-a13f-e933719142b6",
+    "report_id": "a4bc3436-0938-428d-ae27-f7fe339860fa",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "685a74ba-de12-4619-b728-f88ddc0f46b5",
+    "report_id": "3e98e314-dced-4894-a8c5-57c316071cbc",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Medium"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "d044586a-7c13-4dfd-8d49-eb89d7f13107",
+    "report_id": "4aa3988f-1f72-4f4f-8b43-0e9c8bd05a00",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "b53ef14e-3a2c-4229-8475-83fca7058b0f",
+    "report_id": "be70f99f-0aa5-4dee-9bee-8926aadfe34b",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "7e031053-71da-42a2-bbca-cac29723d840",
+    "report_id": "eee51c47-4f4b-48f4-be57-f446bd2d19db",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "97319d3e-18c7-448e-b227-36a8cb641efc",
+    "report_id": "996e568d-a36a-4511-9866-434723a69d0a",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Medium"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "e82fe5d3-4675-452c-990c-79935b71a7c5",
+    "report_id": "73333364-be03-4a51-af91-68df67658e2d",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "9de7a285-26e7-4cfd-b5c7-20a974cf94fc",
+    "report_id": "e38e7de8-ceb7-463d-a9d9-ebea551997b1",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "907aa69b-bc80-43f5-b428-91c1f3a25c6b",
+    "report_id": "5a48a0a3-9680-43ba-863e-d5f9883d96b3",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "776db123-2f3f-40b5-b699-9ae06f42baa4",
+    "report_id": "fc2cb88c-f3b6-40e6-83d6-b27d675669d8",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "c1df1898-a7f7-4da0-b5ed-dbe95e43d9d2",
+    "report_id": "7605698b-883f-4598-8f96-3ef285f7f9ec",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "1e8039d3-8434-46c1-9361-f18ef5e7f14b",
+    "report_id": "3fc169cb-8939-4491-96a0-d9ad08bc9aba",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:39:38.137Z"
+  },
+  {
+    "log_id": "a1b52ddc-360c-4176-b5e6-59435fcda846",
+    "report_id": "4a282d89-9e19-4cbe-8775-8db570324c9a",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "e5e4b493-7326-44fa-bc97-7b6dc5f5abf4",
+    "report_id": "273fce73-5597-490a-8fa1-bce0a44ce7b6",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "cbef2e16-6cb5-4876-9504-4fddb088ccb8",
+    "report_id": "26b94ecc-d392-4198-93b7-00d4708dc397",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "b6554e5e-88bb-4064-84df-c434fda275e1",
+    "report_id": "71bb5d64-909c-446d-b291-48a2a7554aed",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "1facb912-403b-4a13-b21e-d202b5d7dc19",
+    "report_id": "34912506-1b37-4c48-837c-5df6a607f7a7",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "ed10b474-d6bd-4f22-b3d7-58986da4f712",
+    "report_id": "b3149bd6-9b51-436b-9a72-f015deb3ec88",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "fa73e7cf-81fe-4056-b012-97d2ebfb5392",
+    "report_id": "60675920-56bb-40d7-9b99-5020cf2c4321",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "14675ca4-0b05-43ed-b679-129065694b97",
+    "report_id": "c5175907-e901-4031-83a4-4e27a8020d98",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "c6838cba-4b05-4879-837a-44dbe868dab9",
+    "report_id": "e57ca328-e31b-41d5-a2eb-772c89d1baeb",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "84c7d600-0381-4971-bd94-114af8d4adae",
+    "report_id": "2310ae97-be53-4f51-bb7d-7750ab955c01",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "6667bf50-fe66-4f30-a3bb-67499779074b",
+    "report_id": "adbd6e70-3561-4a3c-9a53-b632f1a75a15",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "2f024c55-de70-4e94-b11e-9f2109fa03d7",
+    "report_id": "88ac6cf0-bb51-411a-bf57-9f4efec79bc7",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "b36e93a6-0078-486f-aa15-c77941df792a",
+    "report_id": "f2a654c4-4173-4f32-a318-edcc4e360977",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "c703469d-3769-4d5d-aff3-3b3984eb61d8",
+    "report_id": "db938e8d-fd0b-470b-93fc-3928d5d354c1",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "b3ae69a1-6950-416a-b484-3de85646a17a",
+    "report_id": "37ad6c28-40a8-438c-b11c-17ddce667deb",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "3a8bf805-b617-4535-b46c-2e63381a2972",
+    "report_id": "ee3ab321-0882-48ab-99f7-49102af1b10f",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Medium"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "3ae7201a-d143-4966-aa20-e39cdc8ed629",
+    "report_id": "71d68322-e3b0-4926-bd1c-6eda7b463c24",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "0a1ec541-09db-4fdd-9a41-922d63a04204",
+    "report_id": "596a9412-fdec-486e-b3e8-3d3249bc7e44",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "541e6d60-db6d-435d-b755-d00708b02c11",
+    "report_id": "fb0c1eca-0371-4939-856d-57d1b71efb54",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "23639d8a-b353-44e6-a1d8-832faa8f5c7e",
+    "report_id": "3e1e1b7e-5435-4ee8-9080-a0c03c27edac",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Medium"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "687f0020-9391-4898-8252-c41dc09eb491",
+    "report_id": "958ec48e-28cf-4255-8fa6-1783a1ba0440",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "High"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "6f7b28f9-82f3-48f3-930c-112a2c652de4",
+    "report_id": "8195a239-1c18-4039-952b-eaa951eb55fe",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "e205f4b0-239f-4377-9456-0482aa789bb2",
+    "report_id": "947b71fd-1257-4bbf-867a-4bf200d02230",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "05cc4012-931c-4f8f-aa30-28a8fc764551",
+    "report_id": "b007aed0-e68b-400d-90e3-0123c0bd04c2",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "c13b1e1a-0c3c-48ab-8be5-f4d14a5ebcba",
+    "report_id": "e39b4579-4045-493a-9bfd-fe22355aaf7c",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "c2852d41-6283-4bf9-88e0-5145e35e3636",
+    "report_id": "5bb834f9-4ede-4faf-a2f5-3da18e6f4983",
+    "actor_id": "seed-system-admin",
+    "actor_name": "OIL HSE System Initializer",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Low"
+    },
+    "timestamp": "2026-09-29T12:49:02.471Z"
+  },
+  {
+    "log_id": "7a9b5adc-7625-47b7-8dc6-3e93afc376d3",
+    "report_id": "818299d0-0a00-479d-8ad1-1e6e5780c2d0",
+    "actor_id": "b058598f-1c14-488b-94c7-66cdea9cc64c",
+    "actor_name": "Rahul Sarma (Field Engineer)",
+    "action": "Created",
+    "before_state": null,
+    "after_state": {
+      "status": "Submitted",
+      "risk_band": "Pending"
+    },
+    "timestamp": "2026-09-29T12:49:03.193Z"
+  },
+  {
+    "log_id": "9bd47c8f-9556-41cd-b5fc-64c65139e87d",
+    "report_id": "818299d0-0a00-479d-8ad1-1e6e5780c2d0",
+    "actor_id": null,
+    "actor_name": "PRAHARI ML Engine",
+    "action": "Classified",
+    "before_state": {
+      "risk_band": "Pending"
+    },
+    "after_state": {
+      "risk_score": 76,
+      "risk_band": "High",
+      "hazard_category_primary": "LOTO Bypass",
+      "hazard_category_secondary": [],
+      "explainability_terms": [
+        "lockout",
+        "tagout",
+        "isolation",
+        "415V",
+        "tagout padlock",
+        "415v mcc feeder"
+      ],
+      "is_manual_review": false,
+      "confidence": 0.359
+    },
+    "timestamp": "2026-09-29T12:49:03.222Z"
+  },
+  {
+    "log_id": "456e2d82-cef1-429c-9650-f275d29bf997",
+    "report_id": "818299d0-0a00-479d-8ad1-1e6e5780c2d0",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Status Changed",
+    "before_state": {
+      "status": "Submitted"
+    },
+    "after_state": {
+      "status": "Reviewed"
+    },
+    "timestamp": "2026-09-29T12:49:03.254Z"
+  },
+  {
+    "log_id": "0c4ea9f9-a69b-41a6-b57f-31b03738c35f",
+    "report_id": "818299d0-0a00-479d-8ad1-1e6e5780c2d0",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Re-classified",
+    "before_state": {
+      "risk_score": 76,
+      "risk_band": "High",
+      "hazard_category_primary": "LOTO Bypass",
+      "is_manual_review": false
+    },
+    "after_state": {
+      "risk_score": 90,
+      "risk_band": "High",
+      "hazard_category_primary": "LOTO Bypass",
+      "is_manual_review": false,
+      "manual_review_notes": "Verified by HSE Officer Priyanka Borah during field walk.",
+      "manual_override_by": "Priyanka Borah (HSE Manager)",
+      "manual_override_at": "2026-09-29T12:49:03.270Z"
+    },
+    "timestamp": "2026-09-29T12:49:03.274Z"
+  },
+  {
+    "log_id": "a5a639b0-d7b8-4ff0-9442-46274606dd0e",
+    "report_id": "818299d0-0a00-479d-8ad1-1e6e5780c2d0",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Status Changed",
+    "before_state": {
+      "status": "Reviewed"
+    },
+    "after_state": {
+      "status": "Escalated"
+    },
+    "timestamp": "2026-09-29T12:49:03.292Z"
+  },
+  {
+    "log_id": "0ae90ee1-73cc-45a4-806a-9f9744ff4685",
+    "report_id": "818299d0-0a00-479d-8ad1-1e6e5780c2d0",
+    "actor_id": "112b5779-07ac-4568-a7c4-b3da62f73e7f",
+    "actor_name": "Priyanka Borah (HSE Manager)",
+    "action": "Status Changed",
+    "before_state": {
+      "status": "Escalated"
+    },
+    "after_state": {
+      "status": "Closed"
+    },
+    "timestamp": "2026-09-29T12:49:03.313Z"
   }
 ]

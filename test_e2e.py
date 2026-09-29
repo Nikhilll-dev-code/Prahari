@@ -9,10 +9,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def run_tests():
     print("==================================================================")
-    print("  SIF-Sentinel End-to-End Test Suite")
+    print("  PRAHARI End-to-End Acceptance Test Suite")
     print("==================================================================")
 
-    # 1. Start ML Service & Backend in background if not already running
     ml_url = "http://127.0.0.1:8001"
     backend_url = "http://127.0.0.1:5000"
 
@@ -84,7 +83,7 @@ def run_tests():
         assert seed_res.status_code == 200
         print(f"  [PASS] Seed Sample Reports: {seed_res.json()['message']}")
 
-        # Test Login as HSE Officer
+        # Test Login as HSE Officer (Priyanka Borah / Duliajan)
         login_res = requests.post(f"{backend_url}/api/auth/login", json={
             "username": "hse@oilindia.in",
             "password": "oil123"
@@ -92,7 +91,7 @@ def run_tests():
         assert login_res.status_code == 200
         hse_token = login_res.json()["token"]
         hse_headers = {"Authorization": f"Bearer {hse_token}"}
-        print("  [PASS] HSE Officer Login & JWT Issuance: OK")
+        print("  [PASS] HSE Officer Login (Priyanka Borah) & JWT Issuance: OK")
 
         # Test Login as Reporter
         rep_login = requests.post(f"{backend_url}/api/auth/login", json={
@@ -121,8 +120,6 @@ def run_tests():
         print(f"  [PASS] Report Creation & Auto-Classification: ID {created_report['display_id']}, SIF Risk: {created_report['risk_score']}/100, Hazard: {created_report['hazard_category_primary']}")
 
         # Test BR-3 Status Transition State Machine
-        # Rule: Submitted -> Reviewed -> Escalated / Closed
-        # Attempting to Close directly from Submitted must be REJECTED with HTTP 400
         close_fail_res = requests.patch(f"{backend_url}/api/reports/{report_id}/status", json={"status": "Closed"}, headers=hse_headers)
         assert close_fail_res.status_code == 400, "BR-3 Violation not caught! Closing from Submitted should fail."
         print(f"  [PASS] BR-3 Enforcement (Submitted -> Closed directly rejected): {close_fail_res.json()['error']}")
@@ -132,6 +129,17 @@ def run_tests():
         assert reviewed_res.status_code == 200
         assert reviewed_res.json()["report"]["status"] == "Reviewed"
         print("  [PASS] Valid Status Step (Submitted -> Reviewed): OK")
+
+        # Test Manual Review Override Endpoint (SRS 5.3 & BR-1)
+        reclassify_res = requests.patch(f"{backend_url}/api/reports/{report_id}/reclassify", json={
+            "risk_score": 90,
+            "risk_band": "High",
+            "hazard_category_primary": "LOTO Bypass",
+            "notes": "Verified by HSE Officer Priyanka Borah during field walk."
+        }, headers=hse_headers)
+        assert reclassify_res.status_code == 200
+        assert reclassify_res.json()["report"]["risk_score"] == 90
+        print("  [PASS] Manual Review Reclassification Override (SRS 5.3 & BR-1): OK")
 
         # Escalate (Valid from Reviewed)
         escalate_res = requests.patch(f"{backend_url}/api/reports/{report_id}/status", json={"status": "Escalated"}, headers=hse_headers)
@@ -149,7 +157,7 @@ def run_tests():
         audit_res = requests.get(f"{backend_url}/api/audit?report_id={report_id}", headers=hse_headers)
         assert audit_res.status_code == 200
         logs = audit_res.json()["logs"]
-        assert len(logs) >= 4 # Created, Classified, Reviewed, Escalated, Closed
+        assert len(logs) >= 5 # Created, Classified, Reviewed, Re-classified, Escalated, Closed
         print(f"  [PASS] Append-Only Audit Trail (FR-5.1 & SEC-5): Recorded {len(logs)} state changes")
 
         # Check Stats Endpoint

@@ -98,7 +98,7 @@ export default function Navbar({ manualReviewCount = 0, currentView, onViewChang
                 )}
               </div>
               <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono tracking-tight hidden sm:block">
-                SIF-Sentinel • AI Precursor Detection
+                PRAHARI • SIF Precursor Detection
               </p>
             </div>
           </div>

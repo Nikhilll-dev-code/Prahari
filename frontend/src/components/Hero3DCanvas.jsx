@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere, OrbitControls } from '@react-three/drei';
 import { Shield } from 'lucide-react';
 
-function InteractiveSentinelMesh({ mousePos }) {
+function InteractivePrahariMesh({ mousePos }) {
   const meshRef = useRef();
   const innerRef = useRef();
 
@@ -122,7 +122,7 @@ export default function Hero3DCanvas() {
           <pointLight position={[0, 5, 0]} intensity={1.0} color="#2E74B5" />
 
           <Float speed={1.8} rotationIntensity={0.6} floatIntensity={0.8}>
-            <InteractiveSentinelMesh mousePos={mousePos} />
+            <InteractivePrahariMesh mousePos={mousePos} />
           </Float>
 
           <OrbitControls 

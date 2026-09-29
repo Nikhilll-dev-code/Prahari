@@ -90,7 +90,7 @@ export default function Login() {
           PRAHARI
         </h1>
         <p className="mt-1 text-sm text-accent-blue dark:text-cyan-bright font-mono font-medium">
-          SIF-Sentinel • AI Precursor Detection Engine
+          AI/NLP SIF Precursor Detection Engine
         </p>
         <div className="inline-flex items-center space-x-2 mt-2 px-3 py-1 bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-cyan-glow/30 rounded-full text-xs font-mono text-slate-600 dark:text-slate-300 backdrop-blur-md shadow-xs">
           <Building2 className="w-3.5 h-3.5 text-accent-blue dark:text-cyan-bright" />

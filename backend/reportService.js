@@ -166,7 +166,7 @@ async function createReport(reportData, user) {
         log_id: uuidv4(),
         report_id: reportId,
         actor_id: null, // System event
-        actor_name: 'SIF-Sentinel ML Engine',
+        actor_name: 'PRAHARI ML Engine',
         action: 'Classified',
         before_state: { risk_band: 'Pending' },
         after_state: updates,
@@ -191,7 +191,7 @@ async function createReport(reportData, user) {
         log_id: uuidv4(),
         report_id: reportId,
         actor_id: null,
-        actor_name: 'SIF-Sentinel System Fallback',
+        actor_name: 'PRAHARI System Fallback',
         action: 'Classified',
         before_state: { risk_band: 'Pending' },
         after_state: fallbackUpdates,
@@ -423,10 +423,70 @@ function getReports(filters = {}, user = null) {
   return reports;
 }
 
+// Manual Override / Reclassification for HSE Officers (SRS 5.3 & BR-1)
+function reclassifyReport(reportId, reclassificationData, user) {
+  const report = db.getReportById(reportId);
+  if (!report) {
+    return { success: false, status: 404, error: 'Report not found' };
+  }
+
+  const { risk_score, risk_band, hazard_category_primary, notes } = reclassificationData;
+  if (!hazard_category_primary || !config.HAZARD_CATEGORIES.includes(hazard_category_primary)) {
+    return { success: false, status: 400, error: 'Valid hazard category is required' };
+  }
+
+  const scoreNum = parseInt(risk_score, 10);
+  if (isNaN(scoreNum) || scoreNum < 0 || scoreNum > 100) {
+    return { success: false, status: 400, error: 'Risk score must be between 0 and 100' };
+  }
+
+  let calculatedBand = risk_band;
+  if (!calculatedBand || calculatedBand === 'Needs Manual Review') {
+    if (scoreNum >= 70) calculatedBand = 'High';
+    else if (scoreNum >= 40) calculatedBand = 'Medium';
+    else calculatedBand = 'Low';
+  }
+
+  const beforeState = {
+    risk_score: report.risk_score,
+    risk_band: report.risk_band,
+    hazard_category_primary: report.hazard_category_primary,
+    is_manual_review: report.is_manual_review
+  };
+
+  const updates = {
+    risk_score: scoreNum,
+    risk_band: calculatedBand,
+    hazard_category_primary: hazard_category_primary,
+    is_manual_review: false,
+    manual_review_notes: notes || 'Manually reviewed and classified by HSE Officer',
+    manual_override_by: user ? user.name : 'HSE Officer',
+    manual_override_at: new Date().toISOString()
+  };
+
+  const updated = db.updateReport(reportId, updates);
+
+  // Log Re-classified audit event (SRS 5.3 & BR-1)
+  db.appendAuditLog({
+    log_id: uuidv4(),
+    report_id: reportId,
+    actor_id: user ? user.user_id : null,
+    actor_name: user ? user.name : 'HSE Officer',
+    action: 'Re-classified',
+    before_state: beforeState,
+    after_state: updates,
+    timestamp: new Date().toISOString()
+  });
+
+  return { success: true, report: updated };
+}
+
 module.exports = {
   validateReportData,
   createReport,
   processBulkImport,
   updateReportStatus,
+  reclassifyReport,
   getReports
 };
+

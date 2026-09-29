@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { api } from '../services/api';
 import { useToast } from '../context/ToastContext';
 import ReportRow from '../components/ReportRow';
@@ -6,7 +6,7 @@ import ReportDetailModal from '../components/ReportDetailModal';
 import BulkImportModal from '../components/BulkImportModal';
 import { 
   Search, Filter, UploadCloud, RefreshCw, AlertTriangle, 
-  ArrowUpDown, X, Sparkles, CheckCircle2, ChevronDown 
+  ArrowUpDown, X, Sparkles, CheckCircle2, ChevronDown, Eye, ShieldAlert, FileText 
 } from 'lucide-react';
 
 const INSTALLATIONS = ['All', 'Duliajan', 'Naharkatiya', 'Moran', 'Digboi', 'Jorhat', 'Kumchai', 'Baghjan', 'Barekuri'];
@@ -47,6 +47,17 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
   const [auditLogs, setAuditLogs] = useState([]);
   const [isBulkModalOpen, setIsBulkModalOpen] = useState(false);
 
+  // Keep a ref to onStatsUpdate to avoid recreating fetchReports when onStatsUpdate changes
+  const onStatsUpdateRef = useRef(onStatsUpdate);
+  useEffect(() => {
+    onStatsUpdateRef.current = onStatsUpdate;
+  }, [onStatsUpdate]);
+
+  // Sync initialRiskFilter if prop changes (e.g. clicking Review badge in Navbar)
+  useEffect(() => {
+    setRiskFilter(initialRiskFilter);
+  }, [initialRiskFilter]);
+
   const fetchReports = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -61,16 +72,12 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
         sort_dir: sortDir
       });
       setReports(data.reports || []);
-
-      if (onStatsUpdate) {
-        onStatsUpdate();
-      }
     } catch (err) {
       setError(err.message || 'Failed to load triage reports');
     } finally {
       setLoading(false);
     }
-  }, [hazardFilter, installationFilter, riskFilter, statusFilter, searchQuery, sortBy, sortDir, onStatsUpdate]);
+  }, [hazardFilter, installationFilter, riskFilter, statusFilter, searchQuery, sortBy, sortDir]);
 
   useEffect(() => {
     fetchReports();
@@ -93,10 +100,30 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
       setSelectedReport(res.report);
       toast.success(`Report ${res.report.display_id || ''} status updated to ${newStatus}`);
       fetchReports();
+      if (onStatsUpdateRef.current) {
+        onStatsUpdateRef.current();
+      }
       const detail = await api.getReportById(reportId);
       setAuditLogs(detail.auditHistory || []);
     } catch (err) {
       toast.error(err.message || 'Failed to update report status');
+      throw err;
+    }
+  };
+
+  const handleReclassify = async (reportId, reclassificationData) => {
+    try {
+      const res = await api.reclassifyReport(reportId, reclassificationData);
+      setSelectedReport(res.report);
+      toast.success(`Report ${res.report.display_id || ''} reclassified as ${res.report.risk_band} Risk`);
+      fetchReports();
+      if (onStatsUpdateRef.current) {
+        onStatsUpdateRef.current();
+      }
+      const detail = await api.getReportById(reportId);
+      setAuditLogs(detail.auditHistory || []);
+    } catch (err) {
+      toast.error(err.message || 'Failed to reclassify report');
       throw err;
     }
   };
@@ -116,6 +143,8 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
     statusFilter !== 'All' || 
     searchQuery.trim() !== '';
 
+  const isManualReviewMode = riskFilter === 'Needs Manual Review';
+
   return (
     <div className="space-y-4 animate-fadeIn text-slate-900 dark:text-slate-100">
       
@@ -124,62 +153,94 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
         <div>
           <div className="flex items-center space-x-2.5">
             <h1 className="text-xl sm:text-2xl font-black font-heading text-slate-900 dark:text-white tracking-tight">
-              Triage Dashboard
+              {isManualReviewMode ? 'Manual Review & HSE Quality Gate' : 'Triage Dashboard'}
             </h1>
             <span className="text-xs bg-blue-100 text-accent-blue dark:bg-blue-950/80 dark:text-cyan-bright font-mono font-bold px-2 py-0.5 rounded border border-blue-200 dark:border-cyan-glow/30">
-              BR-5 Risk Ranked
+              {isManualReviewMode ? 'Inspection Queue' : 'BR-5 Risk Ranked'}
             </span>
           </div>
-          <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
-            Real-time queue ranked by AI SIF Precursor Risk (High fatality potential prioritized first)
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-1 font-sans">
+            {isManualReviewMode 
+              ? 'Observations awaiting human safety verification due to brief text (<10 words per Rule FR-2.6) or offline fallback.'
+              : 'Ranked by PRAHARI AI SIF-Precursor Risk Score (Highest energetic exposure surfaced first)'}
           </p>
         </div>
 
+        {/* Top Header Actions */}
         <div className="flex items-center space-x-2">
+          {isManualReviewMode && (
+            <button
+              onClick={() => setRiskFilter('All')}
+              className="px-3.5 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center space-x-1.5 cursor-pointer"
+            >
+              <Eye className="w-3.5 h-3.5 text-accent-blue dark:text-cyan-bright" />
+              <span>View All Triage</span>
+            </button>
+          )}
+
           <button
             onClick={() => setIsBulkModalOpen(true)}
-            className="btn-premium px-3.5 py-2 bg-gradient-to-r from-primary-navy via-accent-blue to-cyan-500 hover:brightness-110 text-white rounded-xl text-xs font-bold transition shadow-md flex items-center space-x-1.5 min-h-[38px] cursor-pointer"
+            className="btn-premium px-4 py-2 bg-gradient-to-r from-primary-navy via-accent-blue to-cyan-500 text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-md hover:shadow-cyan-glow/30 min-h-[38px] cursor-pointer"
           >
-            <UploadCloud className="w-4 h-4 text-cyan-200 dark:text-cyan-bright" />
-            <span>Bulk Import (CSV)</span>
+            <UploadCloud className="w-4 h-4 text-cyan-200" />
+            <span>Bulk Ingestion (CSV)</span>
           </button>
 
           <button
-            onClick={fetchReports}
-            className="p-2 border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl text-xs transition min-h-[38px] min-w-[38px] flex items-center justify-center cursor-pointer shadow-xs"
+            onClick={() => {
+              fetchReports();
+              if (onStatsUpdateRef.current) onStatsUpdateRef.current();
+            }}
+            className="p-2.5 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl text-xs transition cursor-pointer"
             title="Refresh queue"
-            aria-label="Refresh triage queue"
+            aria-label="Refresh queue"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin text-accent-blue dark:text-cyan-bright' : ''}`} />
           </button>
         </div>
       </div>
 
-      {/* Combinable Filter & Search Bar (UI/UX 5.2: Always visible above queue) */}
-      <div className="glass-panel p-4 rounded-2xl border border-slate-200 dark:border-cyan-glow/20 shadow-glass space-y-3">
+      {/* Manual Review Context Callout Banner (when in Needs Manual Review filter) */}
+      {isManualReviewMode && (
+        <div className="p-4 bg-amber-50 dark:bg-amber-950/70 border border-amber-300 dark:border-amber-500/50 rounded-2xl flex items-start space-x-3 text-amber-900 dark:text-amber-200 shadow-xs animate-fadeIn">
+          <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <h3 className="text-xs font-bold font-heading text-amber-950 dark:text-amber-100 uppercase tracking-wider font-mono">
+              HSE Officer Manual Inspection Protocol (Priyanka Borah • Duliajan)
+            </h3>
+            <p className="text-xs leading-relaxed font-sans text-amber-800 dark:text-amber-200/90">
+              The AI classifier flags reports as <strong>Needs Manual Review</strong> when field engineers submit very short descriptions (fewer than 10 words per Rule FR-2.6 / EC-1) or during degraded offline service. Click any row below to review the original field log and assign the verified SIF hazard category and risk band.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Combinable Filter & Search Bar (UI/UX 5.2) */}
+      <div className="glass-panel p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-glass space-y-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
           
-          {/* Search Box */}
+          {/* Keyword Search */}
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" aria-hidden="true" />
+            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
             <input
               type="text"
               placeholder="Search keyword or ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-cyan-glow focus:border-accent-blue dark:focus:border-cyan-glow min-h-[36px]"
+              className="w-full pl-9 pr-3 py-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-accent-blue transition"
+              aria-label="Search reports by keyword or ID"
             />
           </div>
 
-          {/* Hazard Type Filter */}
+          {/* Hazard Filter */}
           <div>
             <select
               value={hazardFilter}
               onChange={(e) => setHazardFilter(e.target.value)}
-              aria-label="Filter by Hazard Type"
-              className="w-full py-1.5 px-2.5 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-cyan-glow focus:border-accent-blue dark:focus:border-cyan-glow font-medium min-h-[36px]"
+              className="w-full py-2 px-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-accent-blue transition"
+              aria-label="Filter by Hazard Category"
             >
-              <option value="All">All Hazard Types</option>
+              <option value="All">All Hazard Categories</option>
               {HAZARD_CATEGORIES.filter(c => c !== 'All').map(c => (
                 <option key={c} value={c}>{c}</option>
               ))}
@@ -191,10 +252,10 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
             <select
               value={installationFilter}
               onChange={(e) => setInstallationFilter(e.target.value)}
-              aria-label="Filter by Installation"
-              className="w-full py-1.5 px-2.5 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-cyan-glow focus:border-accent-blue dark:focus:border-cyan-glow font-medium min-h-[36px]"
+              className="w-full py-2 px-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-accent-blue transition"
+              aria-label="Filter by Installation Site"
             >
-              <option value="All">All Installations</option>
+              <option value="All">All OIL Field Sites</option>
               {INSTALLATIONS.filter(i => i !== 'All').map(i => (
                 <option key={i} value={i}>{i} Field</option>
               ))}
@@ -206,10 +267,10 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
             <select
               value={riskFilter}
               onChange={(e) => setRiskFilter(e.target.value)}
+              className="w-full py-2 px-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-accent-blue transition"
               aria-label="Filter by Risk Band"
-              className="w-full py-1.5 px-2.5 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-cyan-glow focus:border-accent-blue dark:focus:border-cyan-glow font-medium min-h-[36px]"
             >
-              <option value="All">All Risk Bands</option>
+              <option value="All">All Risk Levels</option>
               {RISK_BANDS.filter(r => r !== 'All').map(r => (
                 <option key={r} value={r}>{r}</option>
               ))}
@@ -221,10 +282,10 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              aria-label="Filter by Status"
-              className="w-full py-1.5 px-2.5 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-accent-blue dark:focus:ring-cyan-glow focus:border-accent-blue dark:focus:border-cyan-glow font-medium min-h-[36px]"
+              className="w-full py-2 px-3 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/90 text-slate-900 dark:text-white font-medium focus:outline-none focus:ring-2 focus:ring-accent-blue transition"
+              aria-label="Filter by Workflow Status"
             >
-              <option value="All">All Statuses</option>
+              <option value="All">All Workflow Statuses</option>
               {STATUSES.filter(s => s !== 'All').map(s => (
                 <option key={s} value={s}>{s}</option>
               ))}
@@ -232,56 +293,23 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
           </div>
         </div>
 
-        {/* Removable Active Chips & Sort Toggle */}
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-200 dark:border-slate-800 text-xs">
-          
-          {/* Active Chips */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-slate-500 dark:text-slate-400 font-medium">
-              Showing <strong className="text-slate-900 dark:text-white">{reports.length}</strong> reports
-            </span>
-
-            {hazardFilter !== 'All' && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-accent-blue border border-blue-200 dark:bg-blue-950 dark:text-cyan-bright dark:border-cyan-glow/40 text-[11px] font-semibold">
-                <span>Hazard: {hazardFilter}</span>
-                <button onClick={() => setHazardFilter('All')} aria-label="Remove hazard filter"><X className="w-3 h-3" /></button>
-              </span>
-            )}
-
-            {installationFilter !== 'All' && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-accent-blue border border-blue-200 dark:bg-blue-950 dark:text-cyan-bright dark:border-cyan-glow/40 text-[11px] font-semibold">
-                <span>Site: {installationFilter}</span>
-                <button onClick={() => setInstallationFilter('All')} aria-label="Remove site filter"><X className="w-3 h-3" /></button>
-              </span>
-            )}
-
-            {riskFilter !== 'All' && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-accent-blue border border-blue-200 dark:bg-blue-950 dark:text-cyan-bright dark:border-cyan-glow/40 text-[11px] font-semibold">
-                <span>Risk: {riskFilter}</span>
-                <button onClick={() => setRiskFilter('All')} aria-label="Remove risk filter"><X className="w-3 h-3" /></button>
-              </span>
-            )}
-
-            {statusFilter !== 'All' && (
-              <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full bg-blue-50 text-accent-blue border border-blue-200 dark:bg-blue-950 dark:text-cyan-bright dark:border-cyan-glow/40 text-[11px] font-semibold">
-                <span>Status: {statusFilter}</span>
-                <button onClick={() => setStatusFilter('All')} aria-label="Remove status filter"><X className="w-3 h-3" /></button>
-              </span>
-            )}
-
+        {/* Filter Chips & Sort Controls */}
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-800">
+          <div className="flex items-center space-x-2 flex-wrap gap-1">
+            <span>Showing <strong className="text-slate-900 dark:text-white font-mono">{reports.length}</strong> observations</span>
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="text-accent-blue dark:text-cyan-bright hover:underline font-bold text-[11px] ml-1 cursor-pointer"
+                className="text-accent-blue dark:text-cyan-bright hover:underline font-bold flex items-center space-x-1 cursor-pointer"
               >
-                Clear all filters
+                <X className="w-3.5 h-3.5" />
+                <span>Reset filters</span>
               </button>
             )}
           </div>
 
-          {/* Sort Controls */}
           <div className="flex items-center space-x-2">
-            <span className="text-slate-500 dark:text-slate-400 text-[11px]">Sort:</span>
+            <span className="text-[11px] font-mono text-slate-400">Sort:</span>
             <button
               onClick={() => {
                 if (sortBy === 'risk_score') {
@@ -291,32 +319,13 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
                   setSortDir('desc');
                 }
               }}
-              className={`px-2.5 py-1 rounded-lg border text-[11px] font-semibold flex items-center space-x-1 transition cursor-pointer ${
+              className={`px-2.5 py-1 rounded-lg border text-[11px] font-bold font-mono flex items-center space-x-1.5 transition cursor-pointer ${
                 sortBy === 'risk_score' 
-                  ? 'bg-blue-50 border-accent-blue text-accent-blue dark:bg-blue-950 dark:border-cyan-glow/60 dark:text-cyan-bright' 
-                  : 'border-slate-300 text-slate-600 hover:text-slate-900 dark:border-slate-800 dark:text-slate-400 dark:hover:text-white'
+                  ? 'bg-blue-50 dark:bg-blue-950/80 border-accent-blue dark:border-cyan-glow/50 text-accent-blue dark:text-cyan-bright shadow-2xs' 
+                  : 'border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400'
               }`}
             >
               <span>SIF Risk Score ({sortDir === 'desc' ? 'High→Low' : 'Low→High'})</span>
-              <ArrowUpDown className="w-3 h-3" />
-            </button>
-            
-            <button
-              onClick={() => {
-                if (sortBy === 'observation_datetime') {
-                  setSortDir(sortDir === 'desc' ? 'asc' : 'desc');
-                } else {
-                  setSortBy('observation_datetime');
-                  setSortDir('desc');
-                }
-              }}
-              className={`px-2.5 py-1 rounded-lg border text-[11px] font-semibold flex items-center space-x-1 transition cursor-pointer ${
-                sortBy === 'observation_datetime' 
-                  ? 'bg-blue-50 border-accent-blue text-accent-blue dark:bg-blue-950 dark:border-cyan-glow/60 dark:text-cyan-bright' 
-                  : 'border-slate-300 text-slate-600 hover:text-slate-900 dark:border-slate-800 dark:text-slate-400 dark:hover:text-white'
-              }`}
-            >
-              <span>Date Observed</span>
               <ArrowUpDown className="w-3 h-3" />
             </button>
           </div>
@@ -324,81 +333,59 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
       </div>
 
       {/* Reports Table Queue */}
-      <div className="glass-panel rounded-2xl border border-slate-200 dark:border-cyan-glow/20 shadow-glass overflow-hidden">
-        
-        {/* Loading State: Skeleton Rows per UI/UX Section 9.1 */}
+      <div className="glass-panel rounded-2xl border border-slate-200 dark:border-slate-800 shadow-glass overflow-hidden">
         {loading && reports.length === 0 ? (
-          <div className="p-6 space-y-3" role="status" aria-label="Loading reports queue">
-            {[1, 2, 3, 4, 5, 6].map(i => (
-              <div key={i} className="animate-pulse flex items-center justify-between p-3.5 bg-slate-900/60 rounded-xl border border-slate-800">
-                <div className="h-5 bg-slate-800 rounded w-24" />
-                <div className="h-5 bg-slate-800 rounded w-20" />
-                <div className="h-5 bg-slate-800 rounded w-36" />
-                <div className="h-5 bg-slate-800 rounded w-64 hidden md:block" />
-                <div className="h-5 bg-slate-800 rounded w-20" />
-                <div className="h-5 bg-slate-800 rounded w-16" />
+          /* Skeleton Loader (UI/UX 9.1) */
+          <div className="p-8 space-y-4">
+            {[1, 2, 3, 4, 5].map(i => (
+              <div key={i} className="animate-pulse flex items-center justify-between p-3.5 bg-slate-100 dark:bg-slate-900/60 rounded-xl">
+                <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-20"></div>
+                <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-16"></div>
+                <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-32"></div>
+                <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-64"></div>
+                <div className="h-4 bg-slate-300 dark:bg-slate-700 rounded w-20"></div>
               </div>
             ))}
           </div>
         ) : reports.length === 0 ? (
-          
-          /* Three Distinct Empty States (UI/UX Section 9.3 & UI-5) */
+          /* Empty States (UI/UX 9.3) */
           <div className="p-12 text-center space-y-4">
             {hasActiveFilters ? (
-              /* Empty State 2: Filtered queue with zero matches */
               <div className="space-y-3">
-                <div className="w-12 h-12 bg-slate-800/80 text-slate-400 rounded-full flex items-center justify-center mx-auto border border-slate-700">
-                  <Filter className="w-6 h-6" />
+                <div className="w-14 h-14 bg-slate-100 dark:bg-slate-900 text-slate-400 rounded-2xl flex items-center justify-center mx-auto border border-slate-200 dark:border-slate-800">
+                  <Filter className="w-7 h-7" />
                 </div>
-                <h3 className="font-bold text-white text-base">
-                  No reports match these filters
+                <h3 className="font-bold text-slate-800 dark:text-white text-base font-heading">
+                  {isManualReviewMode ? 'No observations need manual review' : 'No observations match these filters'}
                 </h3>
-                <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                  Try adjusting or resetting your hazard type, installation, or risk band filters.
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+                  {isManualReviewMode 
+                    ? 'All reports have been confidently classified by the PRAHARI AI NLP engine.'
+                    : 'Try adjusting or clearing your active filters to see matching safety observations.'}
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="btn-premium px-4 py-2 bg-accent-blue text-white rounded-xl text-xs font-bold hover:bg-blue-600 transition shadow-glass"
+                  className="btn-premium px-5 py-2.5 bg-accent-blue text-white rounded-xl text-xs font-bold hover:bg-blue-600 transition shadow-md cursor-pointer"
                 >
-                  Clear filters
-                </button>
-              </div>
-            ) : riskFilter === 'Needs Manual Review' ? (
-              /* Empty State 3: Manual Review backlog clear */
-              <div className="space-y-3">
-                <div className="w-12 h-12 bg-emerald-950/80 text-emerald-400 rounded-full flex items-center justify-center mx-auto border border-emerald-500/40">
-                  <CheckCircle2 className="w-6 h-6" />
-                </div>
-                <h3 className="font-bold text-white text-base">
-                  All low-confidence reports reviewed
-                </h3>
-                <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                  There are currently no reports flagged for manual HSE inspection backlog.
-                </p>
-                <button
-                  onClick={clearFilters}
-                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-bold transition border border-slate-700"
-                >
-                  Return to Full Queue
+                  Clear All Filters
                 </button>
               </div>
             ) : (
-              /* Empty State 1: Fresh demo state (0 reports in DB) */
               <div className="space-y-3">
-                <div className="w-12 h-12 bg-blue-950 text-cyan-bright rounded-full flex items-center justify-center mx-auto border border-cyan-glow/40">
-                  <Sparkles className="w-6 h-6" />
+                <div className="w-14 h-14 bg-blue-50 dark:bg-blue-950/80 text-accent-blue dark:text-cyan-bright rounded-2xl flex items-center justify-center mx-auto border border-blue-200 dark:border-cyan-glow/30">
+                  <Sparkles className="w-7 h-7" />
                 </div>
-                <h3 className="font-bold text-white text-base">
-                  No reports yet — submit one from the Reporter view or import a demo dataset
+                <h3 className="font-bold text-slate-800 dark:text-white text-base font-heading">
+                  No reports in the system yet
                 </h3>
-                <p className="text-xs text-slate-400 max-w-sm mx-auto">
-                  Load the synthetic Oil India Limited dataset to evaluate automated SIF risk scoring and explainability.
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+                  Load the pre-curated synthetic Oil India Limited dataset to test the classifier on realistic upstream field logs.
                 </p>
                 <button
                   onClick={() => setIsBulkModalOpen(true)}
-                  className="btn-premium px-4 py-2 bg-gradient-to-r from-primary-navy via-accent-blue to-cyan-glow text-white rounded-xl text-xs font-bold transition shadow-glass"
+                  className="btn-premium px-5 py-2.5 bg-gradient-to-r from-primary-navy via-accent-blue to-cyan-500 text-white rounded-xl text-xs font-bold transition shadow-md cursor-pointer"
                 >
-                  Bulk Import Demo Data
+                  Load OIL Demo Dataset
                 </button>
               </div>
             )}
@@ -407,19 +394,19 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-slate-100 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-700/80 text-[11px] font-bold text-accent-blue dark:text-cyan-bright uppercase tracking-wider font-mono">
-                  <th className="py-3.5 px-4">SIF Risk</th>
+                <tr className="bg-slate-100/75 dark:bg-slate-900/90 border-b border-slate-200 dark:border-slate-800 text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider font-mono">
+                  <th className="py-3.5 px-4">SIF Risk Level</th>
                   <th className="py-3.5 px-3">Report ID</th>
                   <th className="py-3.5 px-3">Hazard Category</th>
                   <th className="py-3.5 px-3">Observation Description</th>
-                  <th className="py-3.5 px-3">Installation</th>
+                  <th className="py-3.5 px-3">OIL Installation</th>
                   <th className="py-3.5 px-3">Reporter Severity</th>
                   <th className="py-3.5 px-3">Status</th>
-                  <th className="py-3.5 px-3">Date</th>
+                  <th className="py-3.5 px-3">Observed Date</th>
                   <th className="py-3.5 px-3 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80 font-sans">
                 {reports.map((report) => (
                   <ReportRow
                     key={report.report_id}
@@ -433,22 +420,26 @@ export default function TriageDashboard({ onStatsUpdate, initialRiskFilter = 'Al
         )}
       </div>
 
-      {/* Screen S6: Report Detail Drill-In Modal */}
+      {/* Report Detail Modal */}
       {selectedReport && (
         <ReportDetailModal
           report={selectedReport}
           auditLogs={auditLogs}
           onClose={() => setSelectedReport(null)}
           onStatusChange={handleStatusChange}
+          onReclassify={handleReclassify}
           isHSE={true}
         />
       )}
 
-      {/* Screen S7: Bulk Import Modal */}
+      {/* Bulk Import Modal */}
       <BulkImportModal
         isOpen={isBulkModalOpen}
         onClose={() => setIsBulkModalOpen(false)}
-        onImportSuccess={fetchReports}
+        onImportSuccess={() => {
+          fetchReports();
+          if (onStatsUpdateRef.current) onStatsUpdateRef.current();
+        }}
       />
     </div>
   );

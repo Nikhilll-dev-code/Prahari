@@ -57,7 +57,7 @@ ensureSeedData();
 app.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
-    service: 'sif-sentinel-backend',
+    service: 'prahari-backend',
     timestamp: new Date().toISOString()
   });
 });
@@ -216,6 +216,19 @@ app.patch('/api/reports/:id/status', auth.requireAuth, auth.requireRoles(config.
   });
 });
 
+// Reports: Manual Reclassify / Override (SRS 5.3 & BR-1)
+app.patch('/api/reports/:id/reclassify', auth.requireAuth, auth.requireRoles(config.ROLES.HSE_OFFICER, config.ROLES.DIVISIONAL_HEAD, config.ROLES.ADMIN), (req, res) => {
+  const result = reportService.reclassifyReport(req.params.id, req.body, req.user);
+  if (!result.success) {
+    return res.status(result.status || 400).json({ error: result.error });
+  }
+
+  res.json({
+    message: 'Report reclassified successfully by HSE Officer',
+    report: result.report
+  });
+});
+
 // Stats: Overall Summary Metrics & KPIs
 app.get('/api/stats', auth.requireAuth, (req, res) => {
   let reports = db.getReports();
@@ -315,5 +328,5 @@ app.post('/api/seed', async (req, res) => {
 });
 
 const server = app.listen(config.PORT, () => {
-  console.log(`SIF-Sentinel Backend API running on port ${config.PORT}`);
+  console.log(`PRAHARI Backend API running on port ${config.PORT}`);
 });

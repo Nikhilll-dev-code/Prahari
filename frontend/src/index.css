@@ -110,14 +110,17 @@ html:not(.dark) .glass-card-interactive:hover {
   box-shadow: 0 14px 35px -8px rgba(46, 116, 181, 0.2);
 }
 
-/* Sentinel Gradient Text Utility */
+/* PRAHARI Gradient Text Utility */
+.dark .gradient-text-prahari,
 .dark .gradient-text-sentinel {
   background: linear-gradient(135deg, #ffffff 0%, #90e0ef 45%, #00b4d8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.light .gradient-text-prahari,
 .light .gradient-text-sentinel,
+html:not(.dark) .gradient-text-prahari,
 html:not(.dark) .gradient-text-sentinel {
   background: linear-gradient(135deg, #0F1E3D 0%, #1F3864 45%, #2E74B5 100%);
   -webkit-background-clip: text;

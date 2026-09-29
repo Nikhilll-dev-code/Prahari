@@ -1,7 +1,7 @@
 {
-  "name": "sif-sentinel-backend",
+  "name": "prahari-backend",
   "version": "1.0.0",
-  "description": "Backend API for SIF-Sentinel AI/NLP Precursor Detection Engine",
+  "description": "Backend API for PRAHARI AI/NLP SIF Precursor Detection Engine",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

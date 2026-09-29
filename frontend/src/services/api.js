@@ -1,13 +1,14 @@
 const API_BASE = '/api';
 
 export function getAuthToken() {
-  return localStorage.getItem('sif_sentinel_token');
+  return localStorage.getItem('prahari_token') || localStorage.getItem('sif_sentinel_token');
 }
 
 export function setAuthToken(token) {
   if (token) {
-    localStorage.setItem('sif_sentinel_token', token);
+    localStorage.setItem('prahari_token', token);
   } else {
+    localStorage.removeItem('prahari_token');
     localStorage.removeItem('sif_sentinel_token');
   }
 }
@@ -80,6 +81,10 @@ export const api = {
   updateReportStatus: (id, status) => request(`/reports/${id}/status`, {
     method: 'PATCH',
     body: JSON.stringify({ status })
+  }),
+  reclassifyReport: (id, reclassificationData) => request(`/reports/${id}/reclassify`, {
+    method: 'PATCH',
+    body: JSON.stringify(reclassificationData)
   }),
   bulkImport: (formData) => request('/reports/bulk', {
     method: 'POST',

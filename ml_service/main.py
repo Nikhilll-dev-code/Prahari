@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from model import engine
 
 app = FastAPI(
-    title="SIF-Sentinel ML NLP Engine",
+    title="PRAHARI ML NLP Engine",
     description="AI/NLP Engine for Serious Injury & Fatality Precursor Detection (SIH26165)",
     version="1.0.0"
 )
@@ -42,7 +42,7 @@ class ClassifyResponse(BaseModel):
 def health_check():
     return {
         "status": "healthy",
-        "service": "sif-sentinel-ml",
+        "service": "prahari-ml",
         "model_loaded": engine.trained,
         "timestamp": time.time()
     }

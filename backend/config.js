@@ -3,7 +3,7 @@ require('dotenv').config();
 
 module.exports = {
   PORT: process.env.PORT || 5000,
-  JWT_SECRET: process.env.JWT_SECRET || 'sif-sentinel-oil-secret-key-2026',
+  JWT_SECRET: process.env.JWT_SECRET || 'prahari-oil-secret-key-2026',
   JWT_EXPIRY: '60m', // FR-4.3: 60 minutes inactivity
   ML_SERVICE_URL: process.env.ML_SERVICE_URL || 'http://127.0.0.1:8001',
   DATA_DIR: path.join(__dirname, 'data'),

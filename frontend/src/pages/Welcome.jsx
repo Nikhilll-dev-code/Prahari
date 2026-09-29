@@ -322,7 +322,7 @@ export default function Welcome({ onGetStarted }) {
                 color: 'text-accent-blue dark:text-cyan-bright'
               },
               {
-                title: 'Disguised High-Risk Sentinel',
+                title: 'Disguised High-Risk Guard',
                 desc: 'Automatically surfaces dangerous observations that field personnel downplayed as Low because nobody got hurt.',
                 icon: AlertTriangle,
                 color: 'text-red-500 dark:text-red-400'
