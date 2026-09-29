@@ -1,4 +1,4 @@
-const API_BASE = '/api';
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '') + '/api';
 
 export function getAuthToken() {
   return localStorage.getItem('prahari_token') || localStorage.getItem('sif_sentinel_token');
